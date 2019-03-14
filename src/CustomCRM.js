@@ -4,7 +4,34 @@ import styled from "react-emotion";
 
 const CRM_baseurl = 'https://owlcrm.herokuapp.com/';
 
-const user_profile = {"profile":{"first_name":"Alan","last_name":"Wimbley","birthday":"1/13/1965","address":"4427 University Street","city":"Seattle","state":"Washington(WA)","zip":"98109","service_level":"platinum","account_balance":"$22,331.00","img_src":"/images/alan_wimbley.jpg","profile_id":"123","account_number":2}};
+const user_profile = {
+  "profiles": {
+    "123": {
+      "first_name":"Alan",
+      "last_name":"Wimbley",
+      "birthday":"1/13/1965",
+      "address":"4427 University Street",
+      "city":"Seattle","state":"Washington(WA)",
+      "zip":"98109","service_level":"platinum",
+      "account_balance":"$22,331.00",
+      "img_src":"/images/alan_wimbley.jpg",
+      "profile_id":"123",
+      "account_number":2
+    },
+    "16": {
+      "first_name":"Kelli",
+      "last_name":"Maag",
+      "birthday":"12/16/1980",
+      "address":"1617 Derek Drive",
+      "city":"Kent","state":"Ohio(OH)",
+      "zip":"44240","service_level":"silver",
+      "account_balance":"$2,115.00",
+      "img_src":"/images/kelli_maag.jpg",
+      "profile_id":"16",
+      "account_number":234
+    }
+  }
+};
 
 
 class CustomCRM extends React.Component {
@@ -26,7 +53,14 @@ class CustomCRM extends React.Component {
         </LargeCaption>
       </CRMContainer>
     } else {
-      task.attributes.account_data = user_profile.profile;
+      console.log("printing atrribute")
+      console.log(task.attributes)
+      if (task.attributes.name == "+6585221396") {
+        task.attributes.account_data = user_profile.profiles[123];
+      }
+      else {
+        task.attributes.account_data = user_profile.profiles[16];
+      }
       content = <CRMContainer className="Twilio Twilio-CRMContainer">
                   <div>
                     <ProfilePhoto alt="" src={CRM_baseurl + task.attributes.account_data.img_src}></ProfilePhoto>
