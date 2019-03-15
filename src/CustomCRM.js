@@ -55,7 +55,7 @@ class CustomCRM extends React.Component {
     } else {
       console.log("printing atrribute")
       console.log(task.attributes)
-      if (task.attributes.name == "+6585221396") {
+      if (task.attributes.name == "Alan" || task.attributes.name == "+6585221396" || task.attributes.name == "whatsapp:+6585221396") {
         task.attributes.account_data = user_profile.profiles[123];
       }
       else {
