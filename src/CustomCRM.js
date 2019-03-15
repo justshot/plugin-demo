@@ -43,6 +43,7 @@ class CustomCRM extends React.Component {
   render() {
     const { task } = this.props;
     let content;
+    // no task assigned
     if (!task || !task.attributes) {
       content = <CRMContainer>
         <HeaderLine><Header>
@@ -52,14 +53,22 @@ class CustomCRM extends React.Component {
           No task selected
         </LargeCaption>
       </CRMContainer>
+    // task assgined
     } else {
       console.log("printing atrribute")
       console.log(task.attributes)
-      if (task.attributes.name == "Alan" || task.attributes.name == "+6585221396" || task.attributes.name == "whatsapp:+6585221396") {
-        task.attributes.account_data = user_profile.profiles[123];
-      }
-      else {
-        task.attributes.account_data = user_profile.profiles[16];
+      task.attributes.account_data = user_profile.profiles[16];
+
+      //messenger, whatsapp, livechat
+      if (task.attributes.name) {
+          if (task.attributes.name.includes("Alan") || task.attributes.name.includes("+6585221396")){
+            task.attributes.account_data = user_profile.profiles[123];
+          }
+      // voice call
+      } else if (task.attributes.called) {
+          if (task.attributes.called.includes("85230011505")) {
+            task.attributes.account_data = user_profile.profiles[123];
+          }
       }
       content = <CRMContainer className="Twilio Twilio-CRMContainer">
                   <div>
