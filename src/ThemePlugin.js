@@ -19,6 +19,6 @@ export default class ThemePlugin extends FlexPlugin {
   init(flex, manager) {
     // override theme styles
     manager.updateConfig({colorTheme: { baseName: "DarkGrey"}})
-    flex.MainHeader.defaultProps.logoUrl = "https://www.shareicon.net/data/256x256/2016/06/08/777871_browser_512x512.png";
+    flex.MainHeader.defaultProps.logoUrl = "http://iconsetc.com/icons-watermarks/simple-ios-orange-gradient/foundation/foundation_compass/foundation_compass_simple-ios-orange-gradient_256x256.png";
   }
 }
